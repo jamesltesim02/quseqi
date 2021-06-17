@@ -1,0 +1,23 @@
+{
+  "name": "quseqi",
+  "version": "1.0.0",
+  "description": "QUSEQI, Quseqi, 取色器, Pick the color",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "USEQI",
+    "Quseqi",
+    "取色器",
+    "Pick",
+    "the",
+    "color"
+  ],
+  "author": "quseqi",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^13.1.2"
+  }
+}
