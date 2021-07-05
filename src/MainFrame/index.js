@@ -2,12 +2,22 @@ const path = require('path');
 const { BrowserWindow, screen } = require('electron');
 
 const MainFrame = function (ipcMain) {
-  const { width, height } = screen.getPrimaryDisplay().workAreaSize
-  const win = new BrowserWindow({
+  const screenSize = screen.getPrimaryDisplay().workAreaSize;
+  const fullBounds = {
+    x: 0,
+    y: 0,
+    ...screenSize,
+  };
+
+  const normalBounds = {
     width: 400,
     height: 400,
-    x: width - 410,
-    y: height - 410,
+    x: screenSize.width - 410,
+    y: screenSize.height - 410,
+  };
+
+  const win = new BrowserWindow({
+    ...normalBounds,
     resizable: false,
     alwaysOnTop: true,
     webPreferences: {
@@ -15,10 +25,17 @@ const MainFrame = function (ipcMain) {
     }
   });
 
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
   win.loadFile(path.join(__dirname, 'MainFrame.html'));
 
-  ipcMain.on('main-fullscreen', (event, fullscreen) => win.setFullScreen(fullscreen));
+  ipcMain.on('main-fullscreen', (event, fullscreen) => {
+    win.setFullScreen(fullscreen);
+    if (fullscreen) {
+      win.setBounds(fullBounds);
+    } else {
+      win.setBounds(normalBounds);
+    }
+  });
 
   return win;
 };
