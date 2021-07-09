@@ -14,6 +14,7 @@ button {
   color: red;
 }
 .screenshot-container {
+  position: relative;
   display: none;
   width: 100%;
   height: 100%;
@@ -22,8 +23,22 @@ button {
   width: 100%;
   height: 100%;
 }
+.screenshot-container #locationText,
+#demoText {
+  position: absolute;
+  display: none;
+  z-index: 2;
+  color: #333;
+  text-shadow: 1px 0 1px #fff;
+}
+#demoText {
+  display: block;
+}
 
 .fullscreen .screenshot-container {
+  display: block;
+}
+.fullscreen .screenshot-container #locationText {
   display: block;
 }
 
