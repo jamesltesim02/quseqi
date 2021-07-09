@@ -18,23 +18,19 @@ const MainFrame = function (ipcMain) {
 
   const win = new BrowserWindow({
     ...normalBounds,
-    resizable: false,
-    alwaysOnTop: true,
+    // resizable: false,
+    // alwaysOnTop: true,
+    frame: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   });
 
-  // win.webContents.openDevTools();
+  win.webContents.openDevTools();
   win.loadFile(path.join(__dirname, 'MainFrame.html'));
 
   ipcMain.on('main-fullscreen', (event, fullscreen) => {
     win.setFullScreen(fullscreen);
-    if (fullscreen) {
-      win.setBounds(fullBounds);
-    } else {
-      win.setBounds(normalBounds);
-    }
   });
 
   return win;

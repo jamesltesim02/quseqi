@@ -21,7 +21,6 @@ button {
 .screenshot-container img {
   width: 100%;
   height: 100%;
-  cursor: crosshair;
 }
 
 .fullscreen .screenshot-container {
@@ -33,6 +32,9 @@ button {
   height: 400px;
 }
 
+.fullscreen {
+  cursor: crosshair;
+}
 .fullscreen .dashboard {
   position: absolute;
   right: 20px;
